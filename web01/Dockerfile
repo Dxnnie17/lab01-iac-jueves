@@ -1,4 +1,4 @@
-FROM xginx:trixie-perl
+FROM nginx:trixie-perl
 COPY index.html /usr/share/nginx/html/index.html
 
-EXPOSE 4000
+EXPOSE 80
