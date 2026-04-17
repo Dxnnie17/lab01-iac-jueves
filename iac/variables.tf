@@ -1,2 +1,7 @@
-variable "web_port" {}
-variable "api_port" {}
+variable "web_port" {
+  default = 4001
+}
+
+variable "api_port" {
+  default = 4002
+}
