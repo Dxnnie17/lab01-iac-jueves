@@ -1,6 +1,15 @@
+resource "docker_image" "web" {
+  name = "lab/web:latest"
+
+  build {
+    context    = "${path.root}/../src/web/web/web01"
+    dockerfile = "Dockerfile"
+  }
+}
+
 resource "docker_container" "web" {
   name  = "web-localhost"
-  image = "lab/web"
+  image = docker_image.web.image_id
 
   ports {
     internal = 80
@@ -8,9 +17,18 @@ resource "docker_container" "web" {
   }
 }
 
+resource "docker_image" "web_dev" {
+  name = "lab/web-dev:latest"
+
+  build {
+    context    = "${path.root}/../src/web/web/web02"
+    dockerfile = "Dockerfile"
+  }
+}
+
 resource "docker_container" "web_dev" {
   name  = "web-dev"
-  image = "lab/web"
+  image = docker_image.web_dev.image_id
 
   ports {
     internal = 80
