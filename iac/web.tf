@@ -10,6 +10,9 @@ resource "docker_image" "web" {
 resource "docker_container" "web" {
   name  = "web-localhost"
   image = docker_image.web.image_id
+  networks_advanced {
+    name = docker_network.app.name
+  }
 
   ports {
     internal = 80
@@ -29,6 +32,9 @@ resource "docker_image" "web_dev" {
 resource "docker_container" "web_dev" {
   name  = "web-dev"
   image = docker_image.web_dev.image_id
+  networks_advanced {
+    name = docker_network.app_dev.name
+  }
 
   ports {
     internal = 80
