@@ -5,3 +5,7 @@ variable "web_port" {
 variable "api_port" {
   default = 4002
 }
+
+variable "db_port" {
+  default = 4003
+}

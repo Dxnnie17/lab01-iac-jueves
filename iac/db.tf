@@ -1,0 +1,13 @@
+resource "docker_container" "db" {
+  name  = "bd-localhost"
+  image = "postgres:latest"
+
+  ports {
+    internal = 5432
+    external = var.db_port
+  }
+
+  env = [
+    "POSTGRES_PASSWORD=postgres"
+  ]
+}
